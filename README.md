@@ -2,7 +2,7 @@
 This Node.js application is a simple app to play with an array of Game of Thrones characters and test the type control features that TypeScript offers.
 The TypeScript script *app.ts* calls some functions on this array and the result is returned to the frontend *index.html*.
 
-![Browser screenshot](../images/ts-app.png)
+![Browser screenshot](./images/ts-app.png)
 
 ## Prerequisite
 
