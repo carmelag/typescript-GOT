@@ -4,7 +4,7 @@ The TypeScript script *app.ts* calls some functions on this array and the result
 
 ![Browser screenshot](./images/ts-app.png)
 
-## Prerequisite
+## Prerequisites
 
 1. It is required to have Node.js installed
    
