@@ -1,3 +1,4 @@
+//USe of ENUM
 var Status;
 (function (Status) {
     Status[Status["UNKNOWN"] = 0] = "UNKNOWN";
@@ -14,6 +15,7 @@ var Gender;
 })(Gender || (Gender = {}));
 ;
 ;
+//Creates and returns a new user
 function createNewUser(config) {
     var person = { name: "new", surname: "new", age: 0, socialStatus: Status.UNKNOWN, gender: Gender.UNKNOWN };
     person.name = config.name;
@@ -23,12 +25,15 @@ function createNewUser(config) {
     person.gender = config.gender;
     return person;
 }
+//Returns the age of a User
 function ageOfUser(person) {
     return "Age is: " + person.age;
 }
+//Returns the status of a USer
 function statusOfUser(person) {
     return "Status is: " + person.socialStatus;
 }
+//Array of users, type is UserConfig
 var allUsers;
 allUsers = [
     {
@@ -56,8 +61,10 @@ allUsers = [
         name: "Oberyn", surname: "Martel", age: 45, socialStatus: Status.MARRIED, gender: Gender.MALE
     }
 ];
+//Arrays that will be returned to the frontend containing the married/single people
 var marriedUsers = new Array();
 var availableUsers = new Array();
+//Creates all te users and push them in the right array, depending on their status
 allUsers.forEach(function (charachter) {
     var newUser = createNewUser(charachter);
     if (newUser.socialStatus === Status.MARRIED) {
@@ -67,6 +74,7 @@ allUsers.forEach(function (charachter) {
         availableUsers.push(newUser);
     }
 });
+//Gets the max age among the charachters
 function getMaxAge(age, maxAge) {
     if (age > maxAge) {
         maxAge = age;
@@ -74,6 +82,7 @@ function getMaxAge(age, maxAge) {
     }
     return false;
 }
+//Finds the oldest charachter within the array of characters
 function findOldest(charachters) {
     var maxAge = 0;
     var oldestCharachter;
@@ -85,6 +94,7 @@ function findOldest(charachters) {
     });
     return oldestCharachter;
 }
+//Finds all the women within the array of characters
 function findWomen(charachters) {
     var women;
     women = new Array();
@@ -95,23 +105,25 @@ function findWomen(charachters) {
     });
     return women;
 }
-console.log(marriedUsers);
+//Married characters are returned to the front-end element with id="married-people"
 var marriedSection = document.getElementById("married-people");
 marriedUsers.forEach(function (married) {
     var innerDiv = document.createElement("div");
     innerDiv.innerHTML = married.name + " " + married.surname;
     marriedSection.append(innerDiv);
 });
+//Single characters are returned to the front-end element with id="single-people"
 var singleSection = document.getElementById("single-people");
-console.log(availableUsers);
 availableUsers.forEach(function (available) {
     var innerDiv = document.createElement("div");
     innerDiv.innerHTML = available.name + " " + available.surname;
     singleSection.append(innerDiv);
 });
+//Oldest character is returned to the front-end element with id="oldest-person"
 var oldCharachter = findOldest(allUsers);
 document.getElementById("oldest-person").innerHTML = oldCharachter.name + " " + oldCharachter.surname;
 console.log("The oldest charachter among these people is: " + oldCharachter.name);
+//Female characters and their age are returned to the front-end element with id="age-of-girls"
 var femaleCharacters = findWomen(allUsers);
 var girlsAgeSection = document.getElementById("age-of-girls");
 var br = document.createTextNode("<br />");
